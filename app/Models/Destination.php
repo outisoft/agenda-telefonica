@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Destination extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['name', 'country'];
+
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

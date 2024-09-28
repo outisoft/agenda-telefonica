@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('job');
             $table->string('department');
             $table->foreignId('destination_id')->references('id')->on('destinations')->cascadeOnDelete();
-            $table->string('extencion');
+            $table->string('extension');
             $table->string('email')->unique();
             $table->timestamps();
         });

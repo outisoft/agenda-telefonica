@@ -36,6 +36,7 @@ class DestinationSeeder extends Seeder
             ['name' => 'Bahia Principe Sunlight Tenerife', 'country' => 'España'],
             ['name' => 'Bahia Principe Fantasia Tenerife', 'country' => 'España'],
             ['name' => 'Bahia Principe Sunlight Coral Playa', 'country' => 'España'],
+            ['name' => 'Tulum Country Club', 'country' => 'Mexico'],
         ];
 
         DB::table('destinations')->insert($datos);
