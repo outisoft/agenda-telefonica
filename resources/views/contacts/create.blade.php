@@ -1,32 +1,3 @@
-<!--style>
-    form {
-        width: 300px;
-        margin: 0 auto;
-        padding: 1em;
-        border: 1px solid #ccc;
-        border-radius: 1em;
-    }
-    label {
-        margin-top: 1em;
-        display: block;
-    }
-    input {
-        width: 100%;
-        padding: 0.5em;
-        margin-top: 0.5em;
-    }
-    input[type="submit"] {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 1em;
-        cursor: pointer;
-    }
-    input[type="submit"]:hover {
-        background-color: #45a049;
-    }
-</style-->
-
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
