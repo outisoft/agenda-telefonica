@@ -18,6 +18,12 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
+                        {{ __('Agenda') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="url('destinations')" :active="request()->routeIs('destinations.index') || request()->routeIs('destinations.create') || request()->routeIs('destinations.edit')">
                         {{ __('Destinations') }}
                     </x-nav-link>
@@ -26,6 +32,12 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="url('contacts')" :active="request()->routeIs('contacts.index') || request()->routeIs('contacts.create') || request()->routeIs('contacts.edit')">
                         {{ __('Contacts') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="url('users')" :active="request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit')">
+                        {{ __('Users') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -84,13 +96,24 @@
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="url('destinations')" :active="request()->routeIs('destinations.index')">
+            <x-responsive-nav-link :href="route('agenda')" :active="request()->routeIs('agenda')">
+                {{ __('Agenda') }}
+            </x-responsive-nav-link>
+        </div>
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="url('destinations')" :active="request()->routeIs('destinations.index') || request()->routeIs('destinations.create') || request()->routeIs('destinations.edit')">
                 {{ __('Destinations') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="url('contacts')" :active="request()->routeIs('contacts.index')">
+            <x-responsive-nav-link :href="url('contacts')" :active="request()->routeIs('contacts.index') || request()->routeIs('contacts.create') || request()->routeIs('contacts.edit')">
                 {{ __('Contacts') }}
+            </x-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link :href="url('users')" :active="request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.edit')">
+                {{ __('Users') }}
             </x-responsive-nav-link>
         </div>
 

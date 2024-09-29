@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use App\Models\Destination;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
-
     public function index()
     {
         $contacts = Contact::with('destination')->orderBy('name', 'asc')->get();
@@ -72,5 +72,29 @@ class ContactController extends Controller
         $register->delete();
 
         return redirect()->route('contacts.index');
+    }
+
+    public function agenda()
+    {
+        $isAuthenticated = Auth::check();
+        return view('agenda', compact('isAuthenticated'));
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $isAuthenticated = Auth::check();
+        
+        $contacts = Contact::with('destination')->where('name', 'LIKE', "%{$query}%")
+            ->orWhere('job', 'LIKE', "%{$query}%")
+            ->orWhere('department', 'LIKE', "%{$query}%")
+            ->orWhere('email', 'LIKE', "%{$query}%")
+            ->orWhere('extension', 'LIKE', "%{$query}%")
+            ->get();
+        
+        return response()->json([
+            'contacts' => $contacts,
+            'isAuthenticated' => $isAuthenticated
+        ]);
     }
 }
