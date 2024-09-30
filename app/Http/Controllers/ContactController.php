@@ -11,7 +11,9 @@ class ContactController extends Controller
     public function index()
     {
         $contacts = Contact::with('destination')->orderBy('name', 'asc')->get();
-        return view('contacts.index', compact('contacts'));
+        $destinations = Destination::orderBy('name', 'asc')->get();
+
+        return view('contacts.index', compact('contacts', 'destinations'));
     }
 
     public function create()
@@ -76,8 +78,10 @@ class ContactController extends Controller
 
     public function agenda()
     {
+        $destinations = Destination::orderBy('name', 'asc')->get();
+        $contacts = Contact::with('destination')->orderBy('name', 'asc')->get();
         $isAuthenticated = Auth::check();
-        return view('agenda', compact('isAuthenticated'));
+        return view('agenda', compact('isAuthenticated', 'contacts', 'destinations'));
     }
 
     public function search(Request $request)

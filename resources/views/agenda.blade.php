@@ -33,7 +33,6 @@
                     </header>
 
                     <main>
-
                         <div class="search-container" id="search-container">
                             <h2 class="text-xl text-black dark:text-white">Agenda Telefonica</h2>
                             <input type="text" id="search" class="input-search" placeholder="Buscar..." autofocus>
@@ -88,7 +87,7 @@
                                                 if (data.isAuthenticated) {
                                                     row += `
                                                         <td>
-                                                            <button class="btn btn-sm btn-primary" onclick="editContact(${contact.id})">Editar</button>
+                                                            <button class="btn btn-sm btn-primary" onclick="editModal(${contact.id})">Editar</button>
                                                         </td>
                                                         <td>
                                                             <button class="btn btn-sm btn-danger" onclick="deleteContact(${contact.id})">Eliminar</button>
@@ -115,5 +114,6 @@
                 </div>
             </div>
         </div>
+        @include('layouts.scripts')
     </body>
 </html>
