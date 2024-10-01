@@ -88,14 +88,19 @@ class ContactController extends Controller
     {
         $query = $request->input('query');
         $isAuthenticated = Auth::check();
-        
-        $contacts = Contact::with('destination')->where('name', 'LIKE', "%{$query}%")
-            ->orWhere('job', 'LIKE', "%{$query}%")
-            ->orWhere('department', 'LIKE', "%{$query}%")
-            ->orWhere('email', 'LIKE', "%{$query}%")
-            ->orWhere('extension', 'LIKE', "%{$query}%")
-            ->get();
-        
+    
+        $contacts = Contact::with('destination')
+            ->whereHas('destination', function($q) {
+                $q->where('country', 'Mexico');
+            })
+            ->where(function($q) use ($query) {
+                $q->where('name', 'LIKE', "%{$query}%")
+                ->orWhere('job', 'LIKE', "%{$query}%")
+                ->orWhere('department', 'LIKE', "%{$query}%")
+                ->orWhere('email', 'LIKE', "%{$query}%")
+                ->orWhere('extension', 'LIKE', "%{$query}%");
+            })->get();
+    
         return response()->json([
             'contacts' => $contacts,
             'isAuthenticated' => $isAuthenticated
