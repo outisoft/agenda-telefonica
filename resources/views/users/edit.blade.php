@@ -1,8 +1,12 @@
-<x-app-layout>
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+@foreach($users as $user)
+    <div class="modal fade" id="editModal{{ $user->id }}" tabindex="-1" aria-labelledby="editModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModal{{ $user->id }}">Update User: {{ $user->name }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                     <form method="POST" action="{{ route('users.update', $user->id) }}" class="mt-6 space-y-6">
                         @csrf
                         @method('PUT')
@@ -65,4 +69,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+@endforeach
